@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise For Niseet Bro 💖</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI', sans-serif; }
+        body { background-color: #ffe5ec; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; overflow: hidden; position: relative; }
+        .card { background: #fff0f3; border: 4px solid #ffb3c1; padding: 35px 20px; border-radius: 30px; box-shadow: 0 10px 25px rgba(255, 75, 110, 0.2); max-width: 420px; width: 100%; text-align: center; animation: popIn 0.5s ease-out; z-index: 10; }
+        @keyframes popIn { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        h1 { color: #ff477e; font-size: 24px; margin-bottom: 15px; letter-spacing: 1px; }
+        p { color: #6c757d; font-size: 16px; margin-bottom: 20px; }
+        .big-emoji { font-size: 80px; margin: 20px 0; display: inline-block; animation: float 2.5s ease-in-out infinite alternate; }
+        @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 100% { transform: translateY(-10px) rotate(5deg); } }
+        .gift-grid { display: flex; justify-content: space-around; margin: 25px 0; }
+        .gift-choice { cursor: pointer; transition: transform 0.2s; background: white; padding: 10px; border-radius: 20px; border: 2px solid #ffccd5; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        .gift-choice:hover { transform: scale(1.15); border-color: #ff477e; }
+        .gift-emoji { font-size: 45px; }
+        .gift-label { font-size: 12px; color: #ff7096; font-weight: bold; margin-top: 5px; }
+        .btn-container { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
+        button { padding: 12px 35px; font-size: 16px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.2s; }
+        .yes-btn { background-color: #ff7096; color: white; box-shadow: 0 4px 10px rgba(255, 112, 150, 0.4); }
+        .no-btn { background-color: #ff99ac; color: white; }
+        .action-btn { background-color: #ff477e; color: white; width: 100%; margin-top: 20px; box-shadow: 0 4px 10px rgba(255, 71, 126, 0.4); }
+        .popup-text { background: white; border: 2px dashed #ff7096; padding: 15px; border-radius: 15px; margin-top: 15px; font-size: 15px; color: #d90429; line-height: 1.5; display: none; animation: popIn 0.3s ease-out; }
+        .scrapbook { background: white; padding: 20px; border-radius: 20px; border: 2px solid #ffccd5; text-align: left; margin-bottom: 20px; }
+        .scrapbook h3 { color: #ff477e; margin-bottom: 10px; text-align: center; }
+        .confetti { position: absolute; width: 10px; height: 10px; background-color: #ff477e; position: absolute; top: -10px; border-radius: 50%; animation: fall linear infinite; }
+        @keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div id="screen1" class="card">
+        <h1>Pls Accept The Gift Niseet Bro 🎁</h1>
+        <div class="big-emoji">🥺👉👈</div>
+        <p>I built something special for you, bro. You won't say no to me, right?</p>
+        <div class="btn-container">
+            <button class="yes-btn" onclick="startParty()">YES</button>
+            <button class="no-btn" onclick="goTo('screen1', 'screen2')">NO</button>
+        </div>
+    </div>
+
+    <div id="screen2" class="card hidden">
+        <h1>Why did you click no, bro! 😭</h1>
+        <div class="big-emoji">💔🤦‍♂️🦕</div>
+        <p>That hurts, Niseet! Go back and click the right button immediately, bro.</p>
+        <button class="action-btn" onclick="goTo('screen2', 'screen1')">TRY AGAIN</button>
+    </div>
+
+    <div id="screen3" class="card hidden">
+        <h1>Choose your buddy, bro! ✨</h1>
+        <p>Each one is holding a completely different secret message for you.</p>
+        <div class="gift-grid">
+            <div class="gift-choice" onclick="revealBlessing('🎂 MESSAGE 1:\n\nMay this year bring you endless laughs, brilliant health, and incredible success, Niseet bro! Keep crushing all your goals!')">
+                <div class="gift-emoji">🐱</div>
+                <div class="gift-label">Kitten</div>
+            </div>
+            <div class="gift-choice" onclick="revealBlessing('💖 MESSAGE 2:\n\nFrom surviving boring classroom lectures together to breaking into huge laughing fits, you are an absolute legendary brother, Niseet!')">
+                <div class="gift-emoji">🐶</div>
+                <div class="gift-label">Puppy</div>
+            </div>
+            <div class="gift-choice" onclick="revealBlessing('🎉 MESSAGE 3:\n\nA massive birthday treat is officially pending and non-negotiable, bro! Get ready to celebrate properly!')">
+                <div class="gift-emoji">🐻</div>
+                <div class="gift-label">Bear</div>
+            </div>
+        </div>
+        <div id="blessingPopup" class="popup-text"></div>
+        <button id="nextPageBtn" class="action-btn hidden" onclick="goTo('screen3', 'screen4')">SEE THE MAIN LETTER ➡️</button>
+    </div>
+
+    <div id="screen4" class="card hidden">
+        <h1>Happy Birthday Niseet! 🎉</h1>
+        <div class="scrapbook">
+            <h3>✨ To My Best Friend ✨</h3>
+            <p style="font-size: 14.5px; line-height: 1.6; color: #495057; text-align: center; font-style: italic;">
+                "Happy Birthday, Niseet bro! It's your special day, and I wanted to make sure it started with a smile. Having a true best friend like you makes all the daily stress completely vanish. I'm incredibly grateful for our bond, brother. May this year ahead be your absolute best one yet!"
+            </p>
+        </div>
+        <div class="big-emoji" style="animation: float 1.5s ease-in-out infinite alternate;">🧸🤗❤️</div>
+        <h2 style="color: #ff7096; font-size: 19px; margin-top: 10px;">Virtual Hug For Ya, Bro!</h2>
+    </div>
+
+    <script>
+        function goTo(fromId, toId) { document.getElementById(fromId).classList.add('hidden'); document.getElementById(toId).classList.remove('hidden'); }
+        function startParty() { goTo('screen1', 'screen3'); for (let i = 0; i < 40; i++) { createConfetti(); } }
+        function revealBlessing(text) { const popup = document.getElementById('blessingPopup'); popup.innerText = text; popup.style.display = 'block'; document.getElementById('nextPageBtn').classList.remove('hidden'); }
+        function createConfetti() { const colors = ['#ff477e', '#ff7096', '#ff99ac', '#ffcc00', '#00f5d4', '#00bbf9']; const confetti = document.createElement('div'); confetti.classList.add('confetti'); confetti.style.left = Math.random() * 100 + 'vw'; confetti.style.animationDuration = (Math.random() * 2 + 2) + 's'; confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; confetti.style.width = confetti.style.height = (Math.random() * 6 + 6) + 'px'; document.body.appendChild(confetti); }
+    </script>
+</body>
+</html>
